@@ -80,7 +80,7 @@
 
 % ********************************** Preamble **********************************
 % Preamble: Contains packages and user-defined commands and settings
-\input{Preamble/preamble}
+\input{Early-sections/Preamble/preamble}
 
 % ************************ Thesis Information & Meta-data **********************
 % Thesis title and author information, refernce file for biblatex
@@ -113,10 +113,10 @@
 
 \maketitle
 
-\include{Dedication/dedication}
-\include{Declaration/declaration}
-\include{Acknowledgement/acknowledgement}
-\include{Abstract/abstract}
+\include{Early-sections/Dedication/dedication}
+\include{Early-sections/Declaration/declaration}
+\include{Early-sections/Acknowledgement/acknowledgement}
+\include{Early-sections/Abstract/abstract}
 
 % *********************** Adding TOC and List of Figures ***********************
 
@@ -134,13 +134,11 @@
 % ******************************** Main Matter *********************************
 \mainmatter
 
-\include{Chapter1/chapter1}
-\include{Chapter2/chapter2}
-\include{Chapter3/chapter3}
-\include{Chapter4/chapter4}
-%\include{Chapter5/chapter5}
-%\include{Chapter6/chapter6}
-%\include{Chapter7/chapter7}
+\include{Chapters/Chapter1/chapter1}
+\include{Chapters/Chapter2/chapter2}
+\include{Chapters/Chapter3/chapter3}
+% \include{Chapters/Chapter4/chapter4}
+
 
 
 
@@ -159,7 +157,7 @@
 %\bibliographystyle{unsrt} % Use for unsorted references  
 %\bibliographystyle{plainnat} % use this to have URLs listed in References
 \cleardoublepage
-\bibliography{References/references} % Path to your References.bib file
+\bibliography{End-sections/References/references} % Path to your References.bib file
 
 
 % If you would like to use BibLaTeX for your references, pass `custombib' as
@@ -176,8 +174,8 @@
 
 \begin{appendices} % Using appendices environment for more functunality
 
-\include{Appendix1/appendix1}
-\include{Appendix2/appendix2}
+\include{End-sections/Appendix1/appendix1}
+\include{End-sections/Appendix2/appendix2}
 
 \end{appendices}
 
