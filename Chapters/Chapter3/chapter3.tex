@@ -1,156 +1,91 @@
 %!TEX root = ../thesis.tex
 %*******************************************************************************
-%****************************** Third Chapter **********************************
+%*********************************** First Chapter *****************************
 %*******************************************************************************
-\chapter{My third chapter}
 
-% **************************** Define Graphics Path **************************
+\chapter{Introduction}  %Title of the First Chapter
+
 \ifpdf
-    \graphicspath{{Chapters/Chapter3/Figs/Raster/}{Chapters/Chapter3/Figs/PDF/}{Chapters/Chapter3/Figs/}}
+    \graphicspath{{Chapters/Chapter1/Figs/Raster/}{Chapters/Chapter1/Figs/PDF/}{Chapters/Chapter1/Figs/}}
 \else
-    \graphicspath{{Chapters/Chapter3/Figs/Vector/}{Chapters/Chapter3/Figs/}}
+    \graphicspath{{Chapters/Chapter1/Figs/Vector/}{Chapters/Chapter1/Figs/}}
 \fi
 
-\section{First section of the third chapter}
-And now I begin my third chapter here \dots
 
-And now to cite some more people~\citet{Rea85,Ancey1996}
+%********************************** %First Section  **************************************
+\section{The honeybee and the division of labor} %Section - 1.1 %TODO: is the title good?
+%TODO: indent the first paragraph 
+A honeybee (\textit{Apis mellifera}) colony manifests multiple fascinating examples of complex adaptive behaviour. 
+Localized cues exchanged between individuals amount to emergent directional signals for the entire colony 
+in ways heavily investigated, but often still not completely understood. 
 
-\subsection{First subsection in the first section}
-\dots and some more 
+One of the most notable and well-researched adaptive mechanisms of a colony is its division of labor (DOL). 
+During the winter (a season of low activity for the bees), the colony focuses on survival 
+and its workers are generalists, performing sets of tasks not easily distinguishable from those of other workers. 
 
-\subsection{Second subsection in the first section}
-\dots and some more \dots
-
-\subsubsection{First subsub section in the second subsection}
-\dots and some more in the first subsub section otherwise it all looks the same
-doesn't it? well we can add some text to it \dots
-
-\subsection{Third subsection in the first section}
-\dots and some more \dots
-
-\subsubsection{First subsub section in the third subsection}
-\dots and some more in the first subsub section otherwise it all looks the same
-doesn't it? well we can add some text to it and some more and some more and
-some more and some more and some more and some more and some more \dots
-
-\subsubsection{Second subsub section in the third subsection}
-\dots and some more in the first subsub section otherwise it all looks the same
-doesn't it? well we can add some text to it \dots
-
-\section{Second section of the third chapter}
-and here I write more \dots
-
-\section{The layout of formal tables}
-This section has been modified from ``Publication quality tables in \LaTeX*''
- by Simon Fear.
-
-The layout of a table has been established over centuries of experience and 
-should only be altered in extraordinary circumstances. 
-
-When formatting a table, remember two simple guidelines at all times:
-
-\begin{enumerate}
-  \item Never, ever use vertical rules (lines).
-  \item Never use double rules.
-\end{enumerate}
-
-These guidelines may seem extreme but I have
-never found a good argument in favour of breaking them. For
-example, if you feel that the information in the left half of
-a table is so different from that on the right that it needs
-to be separated by a vertical line, then you should use two
-tables instead. Not everyone follows the second guideline:
-
-There are three further guidelines worth mentioning here as they
-are generally not known outside the circle of professional
-typesetters and subeditors:
-
-\begin{enumerate}\setcounter{enumi}{2}
-  \item Put the units in the column heading (not in the body of
-          the table).
-  \item Always precede a decimal point by a digit; thus 0.1
-      {\em not} just .1.
-  \item Do not use `ditto' signs or any other such convention to
-      repeat a previous value. In many circumstances a blank
-      will serve just as well. If it won't, then repeat the value.
-\end{enumerate}
-
-A frequently seen mistake is to use `\textbackslash begin\{center\}' \dots `\textbackslash end\{center\}' inside a figure or table environment. This center environment can cause additional vertical space. If you want to avoid that just use `\textbackslash centering'
+For the spring-summer season, however, the hive’s goals change and along with them, the patterns of labor division. 
+Hive growth and resource accumulation take priority, and specialization eventuates amongst workers. 
+They begin to fill distinct roles, the allocation of which highly correlates with age (an effect 
+known as temporal polyethism) - but is also grounded in the colony’s current needs and in environmental 
+factors affecting it (adaptive behaviour) \citep{seeley_adaptive_1982}. Groups of workers that can be 
+categorized as performing the same set of tasks are commonly referred to as castes. It is common to recognize 
+four of them in the temporal caste system that the worker bees exhibit in the summer:
+\textit{cell cleaners, nurses, middle-aged bees (MABs),} and \textit{foragers}. 
+This work concentrates on the transition between \textit{MABs} and \textit{foragers}, 
+possibly the most distinguishable and important in the lifecycle of a bee.
 
 
-\begin{table}
-\caption{A badly formatted table}
-\centering
-\label{table:bad_table}
-\begin{tabular}{|l|c|c|c|c|}
-\hline 
-& \multicolumn{2}{c}{Species I} & \multicolumn{2}{c|}{Species II} \\ 
-\hline
-Dental measurement  & mean & SD  & mean & SD  \\ \hline 
-\hline
-I1MD & 6.23 & 0.91 & 5.2  & 0.7  \\
-\hline 
-I1LL & 7.48 & 0.56 & 8.7  & 0.71 \\
-\hline 
-I2MD & 3.99 & 0.63 & 4.22 & 0.54 \\
-\hline 
-I2LL & 6.81 & 0.02 & 6.66 & 0.01 \\
-\hline 
-CMD & 13.47 & 0.09 & 10.55 & 0.05 \\
-\hline 
-CBL & 11.88 & 0.05 & 13.11 & 0.04\\ 
-\hline 
-\end{tabular}
-\end{table}
+%********************************** %Second Section  **************************************
+\section{The foraging phase}
+The foraging phase is the last one in a bee’s life and comes with an increased risk of death. 
+It is often proposed that this has to do with the extreme strain foraging puts on their bodies - 
+essentially causing them to work themselves to death. This is supported for example by 
+\citep{williams_age_2008}, % Williams, 2008 vs [3] 
+who have shown honeybee flight to cause extremely high metabolic rates and induce oxidative stress, 
+likely significantly accelerating the ageing process and causing early deaths. On the other hand,
+the results of \citep{visscher_survivorship_1997} suggest that foragers’ deaths are usually caused 
+not by senescence, but rather by the heightened risks of outside life that come with their function 
+(such as the risk of predation). According to their findings, forager mortality rates are constant 
+with respect to age - and not accelerating, as would have been suggested by the body strain hypothesis. 
 
-\begin{table}
-\caption{A nice looking table}
-\centering
-\label{table:nice_table}
-\begin{tabular}{l c c c c}
-\hline 
-\multirow{2}{*}{Dental measurement} & \multicolumn{2}{c}{Species I} & \multicolumn{2}{c}{Species II} \\ 
-\cline{2-5}
-  & mean & SD  & mean & SD  \\ 
-\hline
-I1MD & 6.23 & 0.91 & 5.2  & 0.7  \\
+Regardless of the reasons behind it, foraging nearly always ends in the death of a bee. That fact, 
+combined with an estimate of the length of the foraging phase  (mean of 7.7 days ± 0.75 days, 
+median of 7 days, and range of 2 to 17 day according to \citep{visscher_survivorship_1997}, 
+should allow us to get a very simple estimate of the foraging period, which we can then use 
+to validate the results we produce with more involved methods.
+%TODO: make sure to indeed validate; or remove that claim
 
-I1LL & 7.48 & 0.56 & 8.7  & 0.71 \\
-
-I2MD & 3.99 & 0.63 & 4.22 & 0.54 \\
-
-I2LL & 6.81 & 0.02 & 6.66 & 0.01 \\
-
-CMD & 13.47 & 0.09 & 10.55 & 0.05 \\
-
-CBL & 11.88 & 0.05 & 13.11 & 0.04\\ 
-\hline 
-\end{tabular}
-\end{table}
+%TODO: cute tiny table with the data quoted above 
 
 
-\begin{table}
-\caption{Even better looking table using booktabs}
-\centering
-\label{table:good_table}
-\begin{tabular}{l c c c c}
-\toprule
-\multirow{2}{*}{Dental measurement} & \multicolumn{2}{c}{Species I} & \multicolumn{2}{c}{Species II} \\ 
-\cmidrule{2-5}
-  & mean & SD  & mean & SD  \\ 
-\midrule
-I1MD & 6.23 & 0.91 & 5.2  & 0.7  \\
+%********************************** %Third Section  **************************************
+\section{The \textit{BeesBook} project}
+This work operates on data from the 2016 iteration of the BeesBook project \citep{wario_automatic_2015}. 
+A hard- and software framework is set up, allowing for high-confidence tracking of all individuals over 
+the entire lifespan of a honeybee colony. It is the first dataset ever collected (to our knowledge) 
+that is extensive enough to provide a comprehensive view of a hive’s life, maintaining the spatial, 
+temporal and social context of the information it stores. 
 
-I1LL & 7.48 & 0.56 & 8.7  & 0.71 \\
+The data it collects can be put in 3 categories: 
+\begin{itemize}
+    \item a list of detections (each assigned to a bee, a point in time and a point in the hive space) 
+    \item a collection of individuals’ paths (added in [X])
+    \item and a collection of bee waggle dance occurrences (added in [X]). 
+\end{itemize}
+%TODO: are paths separate or integrated: were they added later? what about dances?
 
-I2MD & 3.99 & 0.63 & 4.22 & 0.54 \\
+The original \textit{BeesBook} paper put significant focus on waggle dance research, but the dataset and 
+collection method is meant to serve a very general purpose. The system is described to be “conceived as 
+a budget-priced framework for the incremental development of software and hardware components”, 
+capable of supporting a wide range of investigations into invertebrates, the waggle dance, honeybee division 
+of labor, collective intelligence and other related fields.
 
-I2LL & 6.81 & 0.02 & 6.66 & 0.01 \\
 
-CMD & 13.47 & 0.09 & 10.55 & 0.05 \\
 
-CBL & 11.88 & 0.05 & 13.11 & 0.04\\ 
-\bottomrule
-\end{tabular}
-\end{table}
+%********************************** %Fourth Section  **************************************
+\section{This work's goals}
+This work’s primary goal is to add building blocks to the \textit{BeesBook} project by deriving new abstractions
+that can be used in future analyses and to show how the process of deriving such abstractions could look like.
+
+A secondary goal is to provide an example of how analysis could be undertaken in the future, 
+given the data, the set of abstractions and the process for creating them. 
