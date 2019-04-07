@@ -11,41 +11,118 @@
     \graphicspath{{Chapters/Chapter2/Figs/Vector/}{Chapters/Chapter2/Figs/}}
 \fi
 
-I present related work in three categories. The first one is an introduction to invertebrate tracking 
-and automated observation, along with an overview of the state of the art. 
+I present related work in three categories. The first one is an introduction to
+invertebrate tracking and automated observation, along with an overview of the
+state of the art. 
 
-The second focuses on the division of labor in honeybees. It’s meant to set foundation for the analysis 
-that we undertake in this work, as well as for determining what other kinds of approaches should be accessible 
-given the BeesBook dataset and the building blocks that this work adds to it.
+The second focuses on the division of labor in honeybees. It’s meant to set
+foundation for the analysis that we undertake in this work, as well as for
+determining what other kinds of approaches should be accessible given the
+BeesBook dataset and the building blocks that this work adds to it.
 
-Finally, the last one collects works similar to this contribution - ones that use the \textit{BeesBook} 
-dataset to perform some analysis of a honeybee colony’s life and/or add their own functionalities or improvements 
-to the system.
+Finally, the last one collects works similar to this contribution - ones that
+use the \textit{BeesBook} dataset to perform some analysis of a honeybee
+colony’s life and/or add their own functionalities or improvements to the
+system.
 
 
 %********************************** %First Section  **************************************
 \section{Invertebrate observation and tracking} 
 
-Observing invertebrates at scale, before a certain degree of automation was possible, required 
-a lot of careful manual work and some creative approaches. A fascinating example of how experiments 
-were conducted back then can be found in \citep{seeley_adaptive_1982}. The authors mark a hundred bees out of a 
-colony of 21 thousand, using a brush with pigment mixed with shellac (following the example set 
-by \citep{von_frisch_tanzsprache_1965}). They then pick for observation small subsections of the hive 
-(quadrants), employing the help of a Texas Instruments calculator to generate randomness for their choices. 
-Inferences about the entire population are made using the samples, but even to observe the samples, 8 hours 
-of continuous work per day, for over 20 days, was necessary. To create maps of activity, authors used glass 
-sheets that they put markings on and exchanged every day. They then photographed the sheets and projected the 
-photographs against a single sheet of paper, one by one, thereby aggregating the one-day information sets 
-into a single map. They also used a number of other physical and numerical tricks to 
-be able to produce quality data. 
+Observing invertebrates at scale, before a certain degree of automation was
+possible, required a lot of careful manual work and some creative approaches. A
+fascinating example of how experiments were conducted back then can be found in
+\citep{seeley_adaptive_1982}. The authors mark a hundred bees out of a colony of
+21 thousand, using a brush with pigment mixed with shellac (following the
+example set by Karl Von Frisch \citep{von_frisch_tanzsprache_1965}). They then
+pick for observation small subsections of the hive (quadrants), employing the
+help of a Texas Instruments calculator to generate randomness for their choices.
+Inferences about the entire population are made using the samples, but even to
+observe the samples, 8 hours of continuous work per day, for over 20 days, was
+necessary. To create maps of activity, authors used glass sheets that they put
+markings on and exchanged every day. They then photographed the sheets and
+projected the photographs against a single sheet of paper, one by one, thereby
+aggregating the one-day information sets into a single map. They also used a
+number of other physical and numerical tricks to be able to produce quality
+data. 
 
+One step toward an automated process is to take video recordings and analyze
+them manually \citep{naug_structure_2008}, also using markings, sometimes such
+that identifying a single individual from its marker was possible. This is less
+error-prone, but analysis of the film requires no less time than real-time
+observation (and often much more). 
+
+Compared to both those methods, modern approaches that analyze video footage
+automatically save a tremendous amount of effort. Researchers tend to take one
+of two paths: tracking the animals based on their previous positions and body
+features or using specialized markers (tags) that are put on individuals for
+identification.
+
+A prominent and oft-cited example in unmarked tracking is
+\citep{kimura_new_2011}, where good results were achieved in tracking unmarked
+honeybees over short periods of time. They system employed was based on vector
+quantization and temporal contextual information. It was able to distinguish
+between individuals solely based on their body size and movement, keeping track
+of 50\% of the hive (~350 bees) over 10 seconds. 
+
+A recent notable work \citep{bozek_pixel_2018} reports maintaining 71\% tracks
+for over 2 min, around 46\% for 5mins. Such approaches are impressive
+technologically and of great importance by virtue of being generalizable
+(authors cite cells in tissues and human crowds as examples of potential usage);
+yet on the problem of invertebrate tracking they do not yet achieve the results
+of marker-based systems in terms of effectiveness and scale. 
+
+They therefore do not allow for analysis that can draw conclusions relating to
+entire lifespans of individuals, or the colony (which is what I am attempting in
+this work). For anything related to foraging, systems based on trajectory and
+body features are particularly unreliable, as they would inevitably lose track
+of individuals\’ identities whenever those would leave the hive and come back.
+
+%%TODO: Add Metsch
+TODO: Add Mersch (2013).
+
+%%TODO: fix below to be more consistent
+A recent experiment with a strong focus on trophallaxis
+\citep{gernat_automated_2018} has a lot of similarities to ours in terms of
+tracking method. It uses tag markers and tracks multiple bees across a longer
+period of time. Being focused on a more specific problem allowed for a more
+specialized setup that made tracking easier, but was more intrusive in terms of
+how it influenced the bees’ lifes. The hive was single-sided and designed in a
+way that prevented the bees from obscuring each others’ barcodes (presumably by
+keeping the space between hive surface and glass ceiling small). The hive was
+also backlit by infrared light, making the surface easier to distinguish from
+the insects. These factors (hopefully) did not have a strong adverse effect on
+the relevant data, but would not work for a holistic observation attempted in
+BeesBook.
+
+An additional compilation of related work can be found in the attachment section
+of \citep{schlegel_temporal_2017}. It collects 14 contributions in a table
+format, comparing them with respect to parameters such as species, colony size,
+duration of study, and tracking method (manual or automatic). The focus of that
+comparison is interaction networks - they do, however, still fulfil the more
+general criteria of relevance to invertebrate traching and to the BeesBook project.
 
 %********************************** %Second Section  **************************************
-
+\section{TODO: drop or write down, DOL reasearch} 
 
 
 %********************************** %Third Section  **************************************
+\section{Works related to Beesbook} 
 
+%TODO: table-based refactor or text-based refactor
+TODO: table-based refactor or text-based refactor
 
+BeesBook is a long-running project with work subsequent to the original paper
+contributing improvements in the soft- and hardware of the detection stack (Sixt
+et al., 2016, Wild et al., 2018, Boenisch et al., 2018), as well as various
+applications of its data in collective behaviour and honeybee research (Adrian*
+et al, 2018).
 
-%********************************** %Fourth Section  **************************************
+RenderGAN Boenisch 2018 Automatic detection and decoding of honey bee waggle
+dances (Wario 2017) DCCN on markers, Wild 2018
+
+This work is meant to add building blocks to the BeesBook system and derive new
+abstractions that can be used in future analyses, particularly those pertaining
+to the forager transition and the foraging phase of a bee’s life. While no
+previous work seems to state that as an explicit goal, a number of them have
+made significant contributions as a side effect of their examinations.
