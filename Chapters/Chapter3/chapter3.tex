@@ -1,91 +1,153 @@
 %!TEX root = ../thesis.tex
 %*******************************************************************************
-%*********************************** First Chapter *****************************
+%*********************************** Third Chapter *****************************
 %*******************************************************************************
 
-\chapter{Introduction}  %Title of the First Chapter
+\chapter{Implementation and methods}  %Title 
 
 \ifpdf
-    \graphicspath{{Chapters/Chapter1/Figs/Raster/}{Chapters/Chapter1/Figs/PDF/}{Chapters/Chapter1/Figs/}}
+    \graphicspath{{Chapters/Chapter3/Figs/Raster/}{Chapters/Chapter3/Figs/PDF/}{Chapters/Chapter3/Figs/}}
 \else
-    \graphicspath{{Chapters/Chapter1/Figs/Vector/}{Chapters/Chapter1/Figs/}}
+    \graphicspath{{Chapters/Chapter3/Figs/Vector/}{Chapters/Chapter3/Figs/}}
 \fi
 
 
 %********************************** %First Section  **************************************
-\section{The honeybee and the division of labor} %Section - 1.1 %TODO: is the title good?
-%TODO: indent the first paragraph 
-A honeybee (\textit{Apis mellifera}) colony manifests multiple fascinating examples of complex adaptive behaviour. 
-Localized cues exchanged between individuals amount to emergent directional signals for the entire colony 
-in ways heavily investigated, but often still not completely understood. 
+\section{Building a structured library of abstractions}
 
-One of the most notable and well-researched adaptive mechanisms of a colony is its division of labor (DOL). 
-During the winter (a season of low activity for the bees), the colony focuses on survival 
-and its workers are generalists, performing sets of tasks not easily distinguishable from those of other workers. 
+BeesBook is well-suited for testing a broad range of hypotheses % no existing hyp atm
+on the data it collects. This work attempts to use BeesBook’s data
+to pinpoint the moment in which workers transition to foraging, and potentially
+answer some questions about the circumstances of that transition. 
 
-For the spring-summer season, however, the hive’s goals change and along with them, the patterns of labor division. 
-Hive growth and resource accumulation take priority, and specialization eventuates amongst workers. 
-They begin to fill distinct roles, the allocation of which highly correlates with age (an effect 
-known as temporal polyethism) - but is also grounded in the colony’s current needs and in environmental 
-factors affecting it (adaptive behaviour) \citep{seeley_adaptive_1982}. Groups of workers that can be 
-categorized as performing the same set of tasks are commonly referred to as castes. It is common to recognize 
-four of them in the temporal caste system that the worker bees exhibit in the summer:
-\textit{cell cleaners, nurses, middle-aged bees (MABs),} and \textit{foragers}. 
-This work concentrates on the transition between \textit{MABs} and \textit{foragers}, 
-possibly the most distinguishable and important in the lifecycle of a bee.
+I propose an approach of defining abstractions layered on top of the original
+form of the data (which is a list of detections). Each abstraction is conceived
+as a step in a funnel that starts with detections and is meant to produce the
+status of being a forager (or not).
+
+\begin{figure}[htbp!] 
+\centering    
+\includegraphics[width=1.0\textwidth]{basic_funnel}
+\caption[basic_funnel]{Visualization of the abstraction steps}
+\label{fig:basic_funnel}
+\end{figure}
+
+% TODO: consider reformatting as a table
+On top of Detections, we define Presence as a numerical score equal to the
+number of Detections that were registered for a given bee in a time window of
+$t=30$ seconds. On top of Presence, we define Gaps as periods of time where bees
+had a Presence score of zero or close. On top of that, we define Trips as Gaps that
+seem to be caused by the bee leaving the hive (as opposed to occlusion, entering
+brood cells etc.). We finally use Trips as a metric that lets us determine when
+a given bee has started to forage. A more detailed description of the process,
+along with a list of potential problems, is presented below.
+
+The first key idea is the ability to reuse such abstractions for work with
+other research goals. For example, (Marcus, 2019) examines the deaths of bees %TODO: cite Marcus using the first abstraction defined here (Presence, more
+information below). For research into other parts of the DOL or related in-hive
+behavior, the first three abstractions could be reused (e.g. Gaps
+for an investigation into behavior that relates to cleaning brood cells). 
+
+The second key idea is to apply the same methodology for all new research goals.
+If existing abstractions cannot be reused, defining new ones in a preservable or 
+reproducible way ensures future analyses will be much easier to perform.  
+
+%TODO: illustration: abstraction graph
 
 
 %********************************** %Second Section  **************************************
-\section{The foraging phase}
-The foraging phase is the last one in a bee’s life and comes with an increased risk of death. 
-It is often proposed that this has to do with the extreme strain foraging puts on their bodies - 
-essentially causing them to work themselves to death. This is supported for example by 
-\citep{williams_age_2008}, % Williams, 2008 vs [3] 
-who have shown honeybee flight to cause extremely high metabolic rates and induce oxidative stress, 
-likely significantly accelerating the ageing process and causing early deaths. On the other hand,
-the results of \citep{visscher_survivorship_1997} suggest that foragers’ deaths are usually caused 
-not by senescence, but rather by the heightened risks of outside life that come with their function 
-(such as the risk of predation). According to their findings, forager mortality rates are constant 
-with respect to age - and not accelerating, as would have been suggested by the body strain hypothesis. 
+\section{Detections to Presence}
+A Detection in the BeesBook database is the result of a single bee tag being
+recognized in a single frame of video. If that tag is also visible in the next
+frame, this is registered as a new detection. Each detection has information on
+where the tag was detected (x/y coordinates and orientation), when (exact
+timestamp), with what confidence and by which of the four cameras. 
 
-Regardless of the reasons behind it, foraging nearly always ends in the death of a bee. That fact, 
-combined with an estimate of the length of the foraging phase  (mean of 7.7 days ± 0.75 days, 
-median of 7 days, and range of 2 to 17 day according to \citep{visscher_survivorship_1997}, 
-should allow us to get a very simple estimate of the foraging period, which we can then use 
-to validate the results we produce with more involved methods.
-%TODO: make sure to indeed validate; or remove that claim
+TODO: TABLE: an example detection
 
-%TODO: cute tiny table with the data quoted above 
+Calculating Presence scores from raw detections is tallying up the number of
+times a given bee was detected in a 30-sec interval window. The interval size
+was chosen arbitrarily, albeit with some experimentation. The code was written
+in a way that allows for easy re-generation of Presence scores with a different
+interval window size. Another important hyperparameter is the confidence
+requirement. Every detection has a confidence value assigned to it, representing
+the likelihood that the tag was decoded properly (i.e. belongs to the bee it was
+assigned to, and not another one).
+
+Determining a good confidence requirement could conceivably have great influence
+on the next steps. A very high threshold could mean that too many valid
+detections are filtered out and artificial troughs in presence score are created
+in consequence. A low one could mean including detections that did not really
+occur (should not have occured) and artificial peaks in presence score are
+created. The way the process is currently designed, it has more robustness
+towards including fake detections than it has toward discarding real ones. It is
+therefore reasonable to use a fairly low confidence rate. I use C, which filters
+out ~N\% detections (based on three randomly chosen sample days. The interval
+window has less significance and is easier to get right. If it’s small, it could
+lead to unnecessary calculation, too large and it could lead to short artificial
+gaps in presence. [Mention the framing of this as robustness against false
+positives vs false negatives]
+
+TODO: FIG: distribution of confidence values in detections from e.g. one given day). 
+
+Each camera records with a speed of 3FPS. With an interval size of 30 seconds,
+that gives a max expected Presence score of 90 (with exceptions - see the
+Detection/presence problems section below). The score is then thresholded at X,
+mapping it to a binary function. That function is smoothed out by morphological
+closing with a parameter of X. 
+
+TODO: FIG: a day of presence, as score and as a binarized function
+
+TODO: stub: A big part of the purpose (advantage of PRES over DET) is reduced
+size/greater speed. Det file for 1h is 400mb, presence for a day is 12mb.
 
 
-%********************************** %Third Section  **************************************
-\section{The \textit{BeesBook} project}
-This work operates on data from the 2016 iteration of the BeesBook project \citep{wario_automatic_2015}. 
-A hard- and software framework is set up, allowing for high-confidence tracking of all individuals over 
-the entire lifespan of a honeybee colony. It is the first dataset ever collected (to our knowledge) 
-that is extensive enough to provide a comprehensive view of a hive’s life, maintaining the spatial, 
-temporal and social context of the information it stores. 
+From the binarized and smoothed out form of presence, Gaps are generated by
+taking the difference between Presence values for intervals i +1 and i, for all
+intervals. This identifies exits (whenever the difference is -1) and entries
+(whenever the difference is 1). 
 
-The data it collects can be put in 3 categories: 
-\begin{itemize}
-    \item a list of detections (each assigned to a bee, a point in time and a point in the hive space) 
-    \item a collection of individuals’ paths (added in [X])
-    \item and a collection of bee waggle dance occurrences (added in [X]). 
-\end{itemize}
-%TODO: are paths separate or integrated: were they added later? what about dances?
+This makes up a long list of all situations, where the video cameras lost track
+of a bee. 
 
-The original \textit{BeesBook} paper put significant focus on waggle dance research, but the dataset and 
-collection method is meant to serve a very general purpose. The system is described to be “conceived as 
-a budget-priced framework for the incremental development of software and hardware components”, 
-capable of supporting a wide range of investigations into invertebrates, the waggle dance, honeybee division 
-of labor, collective intelligence and other related fields.
+For a sample of those situations, I generate videos for manual analysis. 
+
+Foraging trips are the single most defining aspect of the forager’s life and a
+natural starting point for the investigation. No other bee caste is expected to
+disappear from the cameras’ field of vision with such frequency and regularity.
+We therefore decide on looking closer into trips as our primary method of
+identifying foragers. We start with a raw list of detections as offered by the
+BeesBook database (See the format Fig X / Appendix I). In order to convincingly
+determine an absence period’s beginning and end, we divide the time of the
+entire experiment into intervals of n seconds. For every such interval, we go
+through all possible bee ids and mark the cell for [given interval, given
+bee\_id) with a 1 if the database contains at least one detection for given bee
+with a timestamp within the bounds of the given time interval. This produces a
+matrix of binary values representing every bee’s history of hive presence.
 
 
 
-%********************************** %Fourth Section  **************************************
-\section{This work's goals}
-This work’s primary goal is to add building blocks to the \textit{BeesBook} project by deriving new abstractions
-that can be used in future analyses and to show how the process of deriving such abstractions could look like.
+Fig. X - Illustration of the presence dataframe, dark cell background meaning
+present, light meaning absent. 
 
-A secondary goal is to provide an example of how analysis could be undertaken in the future, 
-given the data, the set of abstractions and the process for creating them. 
+
+Given the presence matrix, we interpret a bee’s absence and reappearance as a
+trip. In order to prevent misclassified detections (TODO: cite BeesBook’s
+misclassification rate)  from artificially increasing the number of trips, we
+smooth out the presence matrix with a rolling median (window\_size = r). This
+means, that any period of presence or absence shorter than floor(r/2) will be
+ignored.
+
+We then summarize the amount of trips a given bee has taken on a given day. This
+hopefully makes foragers distinct from non-foragers 
+
+It is important to note that that when requesting data from the database, we
+pass a ‘desired confidence’ value c. This value, together with the size of the
+interval in seconds (n) and the size of the rolling window that smoothes out the
+detections (r) are three very important hyperparameters that contribute to the
+accuracy of the resulting trip data and to the credibility of conclusions we
+might draw from them.  <to be continued>
+
+Ideas: talk about false positives and false negatives with a presence map for
+all bees, just take some statistical hints - %of time in hive! check
+(dis)appearence proximity to exit 
