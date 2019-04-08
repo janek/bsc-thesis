@@ -12,80 +12,98 @@
 \fi
 
 
-%********************************** %First Section  **************************************
-\section{The honeybee and the division of labor} %Section - 1.1 %TODO: is the title good?
+%******************************* %First Section  *****************************
+\section{The honeybee and the division of labor} %Section - 1.1 %TODO: is the
+title good?
 %TODO: indent the first paragraph 
-A honeybee (\textit{Apis mellifera}) colony manifests multiple fascinating examples of complex adaptive behaviour. 
-Localized cues exchanged between individuals amount to emergent directional signals for the entire colony 
-in ways heavily investigated, but often still not completely understood. 
+A honeybee (\textit{Apis mellifera}) colony manifests multiple fascinating
+examples of complex adaptive behaviour. Localized cues exchanged between
+individuals amount to emergent directional signals for the entire colony in ways
+heavily investigated, but often still not completely understood. 
 
-One of the most notable and well-researched adaptive mechanisms of a colony is its division of labor (DOL). 
-During the winter (a season of low activity for the bees), the colony focuses on survival 
-and its workers are generalists, performing sets of tasks not easily distinguishable from those of other workers. 
-
-For the spring-summer season, however, the hive’s goals change and along with them, the patterns of labor division. 
-Hive growth and resource accumulation take priority, and specialization eventuates amongst workers. 
-They begin to fill distinct roles, the allocation of which highly correlates with age (an effect 
-known as temporal polyethism) - but is also grounded in the colony’s current needs and in environmental 
-factors affecting it (adaptive behaviour) \citep{seeley_adaptive_1982}. Groups of workers that can be 
-categorized as performing the same set of tasks are commonly referred to as castes. It is common to recognize 
-four of them in the temporal caste system that the worker bees exhibit in the summer:
-\textit{cell cleaners, nurses, middle-aged bees (MABs),} and \textit{foragers}. 
-This work concentrates on the transition between \textit{MABs} and \textit{foragers}, 
-possibly the most distinguishable and important in the lifecycle of a bee.
+One of the most notable and well-researched adaptive mechanisms of a colony is
+its division of labor (DOL). During the winter (a season of low activity for the
+bees), the colony focuses on survival and its workers are generalists,
+performing sets of tasks not easily distinguishable from those of other workers.
 
 
-%********************************** %Second Section  **************************************
+For the spring-summer season, however, the hive’s goals change and along with
+them, the patterns of labor division. Hive growth and resource accumulation take
+priority, and specialization eventuates amongst workers. They begin to fill
+distinct roles, the allocation of which highly correlates with age (an effect
+known as temporal polyethism) - but is also grounded in the colony’s current
+needs and in environmental factors affecting it (adaptive behaviour)
+\citep{seeley_adaptive_1982}. Groups of workers that can be categorized as
+performing the same set of tasks are commonly referred to as castes. It is
+common to recognize four of them in the temporal caste system that the worker
+bees exhibit in the summer: \textit{cell cleaners, nurses, middle-aged bees
+(MABs),} and \textit{foragers}. This work concentrates on the transition between
+\textit{MABs} and \textit{foragers}, possibly the most distinguishable and
+important in the lifecycle of a bee.
+
+
+%******************************* %Second Section  *****************************
 \section{The foraging phase}
-The foraging phase is the last one in a bee’s life and comes with an increased risk of death. 
-It is often proposed that this has to do with the extreme strain foraging puts on their bodies - 
-essentially causing them to work themselves to death. This is supported for example by 
-\citep{williams_age_2008}, % Williams, 2008 vs [3] 
-who have shown honeybee flight to cause extremely high metabolic rates and induce oxidative stress, 
-likely significantly accelerating the ageing process and causing early deaths. On the other hand,
-the results of \citep{visscher_survivorship_1997} suggest that foragers’ deaths are usually caused 
-not by senescence, but rather by the heightened risks of outside life that come with their function 
-(such as the risk of predation). According to their findings, forager mortality rates are constant 
-with respect to age - and not accelerating, as would have been suggested by the body strain hypothesis. 
+The foraging phase is the last one in a bee’s life and comes with an increased
+risk of death. It is often proposed that this has to do with the extreme strain
+foraging puts on their bodies - essentially causing them to work themselves to
+death. This is supported for example by \citep{williams_age_2008}, % Williams,
+2008 vs [3] who have shown honeybee flight to cause extremely high metabolic
+rates and induce oxidative stress, likely significantly accelerating the ageing
+process and causing early deaths. On the other hand, the results of
+\citep{visscher_survivorship_1997} suggest that foragers’ deaths are usually
+caused not by senescence, but rather by the heightened risks of outside life
+that come with their function (such as the risk of predation). According to
+their findings, forager mortality rates are constant with respect to age - and
+not accelerating, as would have been suggested by the body strain hypothesis. 
 
-Regardless of the reasons behind it, foraging nearly always ends in the death of a bee. That fact, 
-combined with an estimate of the length of the foraging phase  (mean of 7.7 days ± 0.75 days, 
-median of 7 days, and range of 2 to 17 day according to \citep{visscher_survivorship_1997}, 
-should allow us to get a very simple estimate of the foraging period, which we can then use 
-to validate the results we produce with more involved methods.
+Regardless of the reasons behind it, foraging nearly always ends in the death of
+a bee. That fact, combined with an estimate of the length of the foraging phase
+(mean of 7.7 days ± 0.75 days, median of 7 days, and range of 2 to 17 day
+according to \citep{visscher_survivorship_1997}, should allow us to get a very
+simple estimate of the foraging period, which we can then use to validate the
+results we produce with more involved methods.
 %TODO: make sure to indeed validate; or remove that claim
 
 %TODO: cute tiny table with the data quoted above 
 
 
-%********************************** %Third Section  **************************************
+%******************************* %Third Section  *****************************
 \section{The \textit{BeesBook} project}
-This work operates on data from the 2016 iteration of the BeesBook project \citep{wario_automatic_2015}. 
-A hard- and software framework is set up, allowing for high-confidence tracking of all individuals over 
-the entire lifespan of a honeybee colony. It is the first dataset ever collected (to our knowledge) 
-that is extensive enough to provide a comprehensive view of a hive’s life, maintaining the spatial, 
-temporal and social context of the information it stores. 
+This work operates on data from the 2016 iteration of the BeesBook project
+\citep{wario_automatic_2015}. A hard- and software framework is set up, allowing
+for high-confidence tracking of all individuals over the entire lifespan of a
+honeybee colony. It is the first dataset ever collected (to our knowledge) that
+is extensive enough to provide a comprehensive view of a hive’s life,
+maintaining the spatial, temporal and social context of the information it
+stores. 
 
 The data it collects can be put in 3 categories: 
 \begin{itemize}
-    \item a list of detections (each assigned to a bee, a point in time and a point in the hive space) 
+    \item a list of detections (each assigned to a bee, a point in time and a
+    point in the hive space) 
     \item a collection of individuals’ paths (added in [X])
     \item and a collection of bee waggle dance occurrences (added in [X]). 
 \end{itemize}
-%TODO: are paths separate or integrated: were they added later? what about dances?
+%TODO: are paths separate or integrated: were they added later? what about
+%dances?
 
-The original \textit{BeesBook} paper put significant focus on waggle dance research, but the dataset and 
-collection method is meant to serve a very general purpose. The system is described to be “conceived as 
-a budget-priced framework for the incremental development of software and hardware components”, 
-capable of supporting a wide range of investigations into invertebrates, the waggle dance, honeybee division 
-of labor, collective intelligence and other related fields.
+The original \textit{BeesBook} paper put significant focus on waggle dance
+research, but the dataset and collection method is meant to serve a very general
+purpose. The system is described to be “conceived as a budget-priced framework
+for the incremental development of software and hardware components”, capable of
+supporting a wide range of investigations into invertebrates, the waggle dance,
+honeybee division of labor, collective intelligence and other related fields.
 
 
 
-%********************************** %Fourth Section  **************************************
+%********************************** %Fourth Section
+%**************************************
 \section{This work's goals}
-This work’s primary goal is to add building blocks to the \textit{BeesBook} project by deriving new abstractions
-that can be used in future analyses and to show how the process of deriving such abstractions could look like.
+This work’s primary goal is to add building blocks to the \textit{BeesBook}
+project by deriving new abstractions that can be used in future analyses and to
+show how the process of deriving such abstractions could look like.
 
-A secondary goal is to provide an example of how analysis could be undertaken in the future, 
-given the data, the set of abstractions and the process for creating them. 
+A secondary goal is to provide an example of how analysis could be undertaken in
+the future, given the data, the set of abstractions and the process for creating
+them. 
