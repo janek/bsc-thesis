@@ -13,5 +13,34 @@
 
 
 %********************************** %First Section  **************************************
-\section{Title}
-Text janek
+\section{Evaluation approach}
+
+
+
+\section{Video evaluation}
+
+Text
+
+\begin{table}[]
+    % "Percentage of true positives in the gaps list, overall and by threshold
+    \caption{Comparison of usefulness of results by detection confidence threshold}
+    \centering
+    \label{table:conf_comparison}
+    \begin{tabular}{@{}lccc@{}}
+        \toprule
+                       & Low threshold (0.2) & High threshold (0.99) & Overall \\ \midrule
+        Real gaps      & 94\%                & 88\%                  & 91\%    \\
+        Possible trips & 2\%                 & 1\%                   & 1.5\%  
+    \end{tabular}
+\end{table}
+
+Text 
+
+%TODD: make bigger without losing centering
+%TODO: sort reasons by valuecounts in comparison notebook, regenerate 
+\begin{figure}[htbp!] 
+\centering    
+\includegraphics[width=1.0\textwidth]{gap_reason_dist}
+\caption[gap_reason_dist]{Reason for disappearance by confidence threshold}
+\label{fig:gap_reason_dist}
+\end{figure}

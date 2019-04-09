@@ -151,3 +151,36 @@ might draw from them.  <to be continued>
 Ideas: talk about false positives and false negatives with a presence map for
 all bees, just take some statistical hints - %of time in hive! check
 (dis)appearence proximity to exit 
+
+\section{Known issues and approaches to addressing them}
+
+Misidentified tags Binary tags, especially such with no error-correcting bits,
+can sometimes be have a problem with misclassified (wrongly assigned) tags. In
+the case of BeesBook, this effect was corrected in (Boenisch, 2018) by tracking
+(combining series of detections into paths based on their locations and
+timestamps). The initial ~13% of incorrect decodings was reduced to ~2%. 
+
+Overlaps Because the field-of-view of camera 0 overlaps with camera 1 and camera
+2 overlaps with camera 3, we get duplicate detections whenever a bee enters a
+thin horizontal area in the middle of either sides of the hive (the overlap
+areas). Those detections are still true by definition of a BeesBook detection,
+but they often push the presence score above the assumed maximum of 90. This is
+resolved simply by replacing any >90 score with 90. The reasoning behind this is
+that a bee with duplicate detections should be considered present in the hive
+(all the more given the fact that the overlap areas are not close to the hive
+exit).
+
+Camera outages On occasion, there were camera outages. This is resolved by
+removing the affected days from the data. A simple figure that maps outages by
+day, adapted from (Schlegel, 2017), can be found in attachments. A more
+elaborate interactive visualization can be accessed at (url, thesis by
+Peter..(?), 201X)
+
+
+Camera hiccups In case of some outages, before they happened, the camera would
+produce more frames per second than it was expected to (for a period of time).
+This resulted in Presence scores often reaching multiples of 90 (180 or 270),
+with a maximum of (x). In the worst case, this effect can also combine with the
+overlap. The reasoning here is the same as in the case of overlaps - we consider
+any score above 90 as the bee being present in the hive and replace it with a 90
+to ensure compatibility with the next steps of the process. 
