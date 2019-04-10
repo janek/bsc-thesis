@@ -13,34 +13,79 @@
 
 
 %********************************** %First Section  **************************************
-\section{Evaluation approach}
+\section{Manual analysis of videos}
+
+I initially tried to use Gaps directly as a foundation for identifying foragers. This produced disappointing results and led me to believe there might be a mistake in the process. I felt the need to vaildate my steps so far and refered to recordings from the hive as the best source of ground truth. I randomly selected 200 Gaps (100 created from Detections with a threshold value of 0.99, another 100 from Detections with a threshold value of 0.2). I generated a two-minute video for each of them, with the bee goes missing in the middle of the video. 
 
 
+When analyzing the videos, I was trying to achieve a few goals:
+\begin{itemize}
+\item test which value of detection confidence threshold procuces better results
+\item validate whether Presence and Gaps represent what they were designed to
+\item draw general conclusions about the viability of this method for the forager problem
+\item see first hand what the problems and limitations of it 
+\end{itemize}
 
-\section{Video evaluation}
+%TODO: emphasis (bold and italics)
+In summary, I found that while Presence and Gaps seemed reliably defined, Trips would be very difficult to define on top of Gaps and the method did not seem promising for finding the moment bees become foragers. 
+That’s not to say it’s entirely impossible (and I present speculations as to how it could be done in the Discussion section).
 
-Text
 
-\begin{table}[]
+\section{Validating Presence}
+
+On top of each video, I was displaying the output of my measures for Presence score and Presence binarized. Those were being updated at the beginning of each of the four 30-second intervals that the video contained. I was comparing these values to what I could observe in the videos myself. 
+
+While my observations were obviously not perfectly quantifiable, I found that Presence scores corresponded to what I was seeing: intervals with perfect visibility of the tag had maximum scores and lower scores corresponded to proportionally lower observed visibility. The binarized value for presence was consistent with the score and the threshold, except for situations where it was changed by the morphological closing operator 
+
+
+\section{Validating Gaps}
+
+
+For every video, I was noting down:
+
+\begin{itemize}
+\item whether the bee really disappeared at that moment (as seen by a human observer)
+\item the reason she disappeared 
+\item whether the reason for her disappearance could be a foraging trip
+\end{itemize}
+
+Only a small number of Gaps turned out to be false positives, and that value was twice as low for a lower confidence threshold. This is a desired and interpretable result: a lower threshold means that more detections are taken into account. That makes it easier for the system to consider a bee present, which fills some Gaps that were created artificially and should not be there. It could also potentially create those artificial Gaps from misidentifying tags (and therefore seeing bees while they are not there) - but it seems like the system has more robustness against that, since the overall number of artificial gaps has decreased so significantly.
+
+\begin{table}[h]
     % "Percentage of true positives in the gaps list, overall and by threshold
-    \caption{Comparison of usefulness of results by detection confidence threshold}
+    \caption{Percentage of confirmable gaps by detection confidence threshold}
     \centering
     \label{table:conf_comparison}
     \begin{tabular}{@{}lccc@{}}
         \toprule
-                       & Low threshold (0.2) & High threshold (0.99) & Overall \\ \midrule
-        Real gaps      & 94\%                & 88\%                  & 91\%    \\
-        Possible trips & 2\%                 & 1\%                   & 1.5\%  
+                       & High threshold (0.99) & Low threshold (0.2)  & Overall \\ \midrule
+        Real gaps      & 88\%                & 94\%                  & 91\%    
     \end{tabular}
 \end{table}
 
-Text 
 
-%TODD: make bigger without losing centering
-%TODO: sort reasons by valuecounts in comparison notebook, regenerate 
-\begin{figure}[htbp!] 
-\centering    
-\includegraphics[width=1.0\textwidth]{gap_reason_dist}
-\caption[gap_reason_dist]{Reason for disappearance by confidence threshold}
-\label{fig:gap_reason_dist}
-\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{table}[h]
+    % "Percentage of true positives in the gaps list, overall and by threshold
+    \caption{Amount of noise by detection confidence threshold}
+    \centering
+    \label{table:conf_comparison}
+    \begin{tabular}{@{}lccc@{}}
+        \toprule
+                       & High threshold (0.99) & Low threshold (0.2) & Overall \\ \midrule
+        Possible trips & 1\%                   & 2\%                 & 1.5\%  
+    \end{tabular}
+\end{table}
+

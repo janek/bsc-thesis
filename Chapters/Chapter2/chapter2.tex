@@ -11,6 +11,7 @@
     \graphicspath{{Chapters/Chapter2/Figs/Vector/}{Chapters/Chapter2/Figs/}}
 \fi
 
+% TODO: drop or write: DOL research
 I present related work in three categories. The first one is an introduction to
 invertebrate tracking and automated observation, along with an overview of the
 state of the art. 
@@ -50,7 +51,7 @@ One step toward an automated process is to take video recordings and analyze
 them manually \citep{naug_structure_2008}, also using markings, sometimes such
 that identifying a single individual from its marker was possible. This is less
 error-prone, but analysis of the film requires no less time than real-time
-observation (and often much more). 
+observation (and often ends up taking much more). 
 
 Compared to both those methods, modern approaches that analyze video footage
 automatically save a tremendous amount of effort. Researchers tend to take one
@@ -58,18 +59,20 @@ of two paths: tracking the animals based on their previous positions and body
 features or using specialized markers (tags) that are put on individuals for
 identification.
 
+\section{Tracking unmarked individuals} 
+
 A prominent and oft-cited example in unmarked tracking is
 \citep{kimura_new_2011}, where good results were achieved in tracking unmarked
-honeybees over short periods of time. They system employed was based on vector
+honeybees over short periods of time. The system used there was based on vector
 quantization and temporal contextual information. It was able to distinguish
 between individuals solely based on their body size and movement, keeping track
-of 50\% of the hive (~350 bees) over 10 seconds. 
+of 50\% of the hive (around 350 bees) over 10 seconds. 
 
-A recent notable work \citep{bozek_pixel_2018} reports maintaining 71\% tracks
-for over 2 min, around 46\% for 5mins. Such approaches are impressive
-technologically and of great importance by virtue of being generalizable
-(authors cite cells in tissues and human crowds as examples of potential usage);
-yet on the problem of invertebrate tracking they do not yet achieve the results
+A recent notable contribution \citep{bozek_pixel_2018} reports maintaining 71\% tracks
+for over 2 min, around 46\% for 5mins. Effects of such approaches are impressive
+technologically and of great importance by virtue of being generalizable: 
+authors cite cells in tissues and human crowds as examples of potential usage.
+However, on the problem of invertebrate tracking they do not yet achieve the results
 of marker-based systems in terms of effectiveness and scale. 
 
 They therefore do not allow for analysis that can draw conclusions relating to
@@ -78,8 +81,9 @@ this work). For anything related to foraging, systems based on trajectory and
 body features are particularly unreliable, as they would inevitably lose track
 of individuals\’ identities whenever those would leave the hive and come back.
 
-%%TODO: Add Metsch
-TODO: Add Mersch (2013).
+\section{Tracking using body markers}
+
+%%TODO: Add Mersch (2013) - three sentences 
 
 %%TODO: fix below to be more consistent
 A recent experiment with a strong focus on trophallaxis
@@ -94,6 +98,8 @@ also backlit by infrared light, making the surface easier to distinguish from
 the insects. These factors (hopefully) did not have a strong adverse effect on
 the relevant data, but would not work for a holistic observation attempted in
 BeesBook.
+
+\section{More related studies}
 
 An additional compilation of related work can be found in the attachment section
 of \citep{schlegel_temporal_2017}. It collects 14 contributions in a table
