@@ -15,30 +15,27 @@
 %********************************** %First Section  **************************************
 \section{Direct continuation}
 
-As hinted at in previous sections, I believe this work could achieve the desired result without any other sources of data (exit cams or RFID tags). While it might not be the best way to go about it, 
+As hinted at in previous sections, I could see a path to reliably identifying foragers based on the data at my disposal. While I am certain Trips cannot be identified accurately, I can imagine even a very rudimentary classifier for Trips could be enough to identify foragers, as all that it's needed is for the spike in trips to be noticable. For that, perhaps identifying as little as 10\% of Trips would suffice (provided they are more or less uniformly distributed among real Trips). This is the main reason I believe this approach could still be valid, even if it failed for my attempt.
+
+A rudimentary classifier that would label ever Gap as a Trip or Not Trip could conceivably be trained by human labor in analyzing videos. This would not work if they were generated from the same set of Gaps that the 200 analyzed by me, but Gaps can easily be filtered to increase the likelyhood of finding Trips among them.
+
+Filters could include:
+\begin{itemize}
+ \item time-of-day (foraging is a daily activity
+ \item camera (only cameras 1 and 2 have access to the exit)
+ \item exit distance (only disappearances near to the exit can be Trips)
+\end{itemize}
+
+If the likelyhood for the manual observer to find a gap is high enough (maybe about 20-30\% or more), this seems like a viable option of creating enough labeled examples to train (for example) a Random Forest classifier.
 
 
+\section{Other ways of getting a labeled dataset}
 
+That being said, there might be cheaper and more reliable ways of creating such labeled dataset. Two that come to mind (that have alread beed implemented in various experiments) are RFID tags and exit 
+cameras. Out of this total of three approaches, I would lean toward exit cams as the easiest to bring to life. It requires much less labor than analyzing videos or tagging every bee with an RFID chip, it's also probably cheaper that the latter. The only consideration here would be that it's not trivial to install cameras in a way that ensures a bee's tag will always be recognized as she exits. Even the smallest tube is a 3D space and would be prone to the same problems that the in-hive cameras are prone to: tags oriented at unreadable angles or occluded by other bees. Ideally, three or four cameras would observe the exit, so that no orientation of the bee would make the tag unreadable. To limit occlusions, the tube should be as tight as possible, the lower limit being that an exiting bee can pass a bee trying to enter. The tube should also have enough length so that if occlusions appear, they are made up for by the cameras detecting occluded bees later.
 
-\section{Adding an exit cam or RFID module to the BeesBook project}
+Being able to observe bees exit the hive would be a much more reliable way of building up a forager database. That could of course be used directly for analysis, but it would be beneficial to use it to train a classifier - this way, future or independent iterations of BeesBook could perform analysis on Foragers without installing exit cameras.
 
-
-
-
-
-
-
-
-
-% While the effort put into manually analyzing videos could prove to be quite high, it is important to note that it would only need to be made once. The labeled examples would then train a machine learning classifier, and that classifier could be used in future iterations of the BeesBook experiment, as well as potential implementations in research labs elsewhere in the world.
-
-% That being said, there might be cheaper and more reliable ways of creating such labeled dataset. Two that come to mind (that have alread beed implemented in various experiments) are RFID tags and exit %TODO: citations for rfid and exit cams 
-% cams. Out of these three approaches, I would lean toward exit cams as the easiest to implement. It requires much less labor than analyzing videos or tagging every bee with an RFID chip, it's also probably cheaper that the latter. The only consideration here would be that it's not trivial to install cameras in a way that ensures a bee's tag will always be recognized as she exits. Even the smallest tube is a 3D space and would be prone to the same problems that the in-hive cameras are prone to: tags oriented at unreadable angles or occluded by other bees. Ideally, three or four cameras would observe the exit, so that no orientation of the bee would make the tag unreadable. To limit occlusions, the tube should be as tight as possible, the lower limit being that an exiting bee can pass a bee trying to enter. The tube should also have enough length so that if occlusions appear, they are made up for by the cameras detecting occluded bees later.
-
-
-% \section{How good would a Trips classifier need to be?}
-
-% I propose that it doesn't need to be good at all. This is the main reason I believe this approach could still be valid, even if it failed for my attempt. While getting a good classification of Gaps (as Trips or Not Trips) could be impossible, it's likely that even detecting 10\% of Trips would be enough (provided that this 10\% is more or less uniformly distibuted among real Trips).
 
 
 
