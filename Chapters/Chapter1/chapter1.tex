@@ -3,13 +3,10 @@
 %*********************************** First Chapter *****************************
 %*******************************************************************************
 
-\chapter{Introduction - 95\%}  %Title of the First Chapter
+\chapter{Introduction}  %Title of the First Chapter
 
-\ifpdf
-    \graphicspath{{Chapters/Chapter1/Figs/Raster/}{Chapters/Chapter1/Figs/PDF/}{Chapters/Chapter1/Figs/}}
-\else
-    \graphicspath{{Chapters/Chapter1/Figs/Vector/}{Chapters/Chapter1/Figs/}}
-\fi
+\graphicspath{Chapters/Chapter1/Figs/}
+
 
 
 %******************************* %First Section  *****************************
@@ -35,7 +32,7 @@ needs and in environmental factors affecting it (adaptive behaviour)
 \citep{seeley_adaptive_1982}. Groups of workers that can be categorized as
 performing the same set of tasks are commonly referred to as castes. It is
 common to recognize four of them in the temporal caste system that the worker
-bees exhibit in the summe\citep{johnson_division_2010}r: 
+bees exhibit in the summer \citep{johnson_division_2010}: 
 \textit{cell cleaners, nurses, middle-aged bees(MABs),} and \textit{foragers}. 
 This work concentrates on the transition between
 \textit{MABs} and \textit{foragers}, possibly the most distinguishable and
@@ -54,18 +51,29 @@ process and causing early deaths. On the other hand, the results of
 \citep{visscher_survivorship_1997} suggest that foragers’ deaths are usually
 caused not by senescence, but rather by the heightened risks of outside life
 that come with their function (such as the risk of predation). According to
-their findings, forager mortality rates are constant with respect to age - and
-not accelerating, as would have been suggested by the body strain hypothesis. 
+their findings, forager mortality rates are constant with respect to age (and
+not accelerating, as would have been suggested by the body strain hypothesis). 
 
 Regardless of the reasons behind it, foraging nearly always ends in the death of
-a bee. That fact, combined with an estimate of the length of the foraging phase
-(mean of 7.7 days ± 0.75 days, median of 7 days, and range of 2 to 17 days
-according to \citep{visscher_survivorship_1997}), should allow us to get a very
-simple estimate of the foraging period, which we could then use for basic 
-validation of the results we produce with our methods.
+the bee. That fact, combined other basic metrics of the foraging phas should allow 
+us to get a very simple estimate of the foraging period, which we could then use for
+basic validation of the results we produce with our methods.
 
-%TODO: cute tiny table with the data quoted above 
-
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[h]
+\centering
+\caption{Basic metrics for foraging phase lenght and forager survivorship, according to \cite{visscher_survivorship_1997}}
+\begin{tabular}{|l|c|}
+\hline
+\multicolumn{1}{|c|}{\textit{Metric}}                    & \textit{Value}\\ \hline
+Mean lifespan of foragers (+ 1 standard error)  & 7.7days ± (0.75 days) \\ \hline
+Range of values for a forager lifespa           & 2 -17 days            \\ \hline
+Probability of death per hours of foraging      & 0.036                 \\ \hline
+Probability of death per day of being a forager & 0.161                 \\ \hline
+Probability of death per trip                   & 0.023                 \\ \hline
+\end{tabular}
+\end{table}
 
 %******************************* %Third Section  *****************************
 \section{The \textit{BeesBook} project}
@@ -77,6 +85,26 @@ is extensive enough to provide a comprehensive view of a hive’s life,
 maintaining the spatial, temporal and social context of the information it
 stores. 
 
+\begin{figure}[htbp!] 
+\centering    
+\includegraphics[width=1.0\textwidth]{Chapters/Chapter1/Figs/tag-design-boenisch.png}
+\caption[tag-design-boenisch]{The tag used for marking individuals in the BeesBook project uses 12 binary-encoding segments arranged around two semi-circles (that are used to determine orientation of the tag before decoding it). The tag is glued onto the thorax such that the white semi-circle is rotated towards the bee’s head. The tags are designed to endure all activities, including cell inspections and foraging trips. 
+\\(Figure adapted from \cite{boenisch_tracking_2018})}
+\label{fig:tag-design-boenisch}
+\end{figure}
+
+
+\begin{figure}[htbp!] 
+\centering    
+\includegraphics[width=1.0\textwidth]{Chapters/Chapter1/Figs/hive-layout-schlegel.png}
+\caption[hive-layout-schlegel]{The observational setup consists of four cameras, with a small field-of-view overlap between the two pairs. The hive exit tube is only accessible from Camera 1 and Camera 2's FOV.
+\\(Figure adapted from \cite{schlegel_temporal_2017})}
+\label{fig:hive-layout-schlegel}
+\end{figure}
+
+
+
+
 The data it collects can be put in 3 categories: 
 \begin{itemize}
     \item a list of detections (each assigned to a bee, a point in time and a
@@ -86,6 +114,9 @@ The data it collects can be put in 3 categories:
 \end{itemize}
 %TODO: are paths separate or integrated: were they added later? what about
 %dances?
+
+%TODO: clearpage 
+
 
 The original \textit{BeesBook} paper put significant focus on waggle dance
 research (and providing context around it), but the dataset and collection 

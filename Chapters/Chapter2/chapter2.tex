@@ -48,7 +48,7 @@ number of other physical and numerical tricks to be able to produce quality
 data. 
 
 One step toward an automated process is to take video recordings and analyze
-them manually \citep{naug_structure_2008}, also using markings, sometimes such
+them manually (e.g. \citep{naug_structure_2008}), also using markings, sometimes such
 that identifying a single individual from its marker was possible. This is less
 error-prone, but analysis of the film requires no less time than real-time
 observation (and often ends up taking much more). 
@@ -70,8 +70,8 @@ of 50\% of the hive (around 350 bees) over 10 seconds.
 
 A recent notable contribution \citep{bozek_pixel_2018} reports maintaining 71\% tracks
 for over 2 min, around 46\% for 5mins. Effects of such approaches are impressive
-technologically and of great importance by virtue of being generalizable: 
-authors cite cells in tissues and human crowds as examples of potential usage.
+technologically and of great importance by virtue of being generalizable. 
+Authors cite cells in tissues and human crowds as examples of potential usage.
 However, on the problem of invertebrate tracking they do not yet achieve the results
 of marker-based systems in terms of effectiveness and scale. 
 
@@ -84,10 +84,11 @@ of individuals\’ identities whenever those would leave the hive and come back.
 \section{Tracking using body markers}
 
 %%TODO: Add Mersch (2013) - three sentences 
+The most recognizable experiment in tracking entire colonies over longer periods of time was performed on ants in 2013 \citep{mersch_tracking_2013}. The authors marked newly ecloded workers with a different color every week, as a minimal way of tracking their age. They finally assigned individual tags witha a barcode-like matrix. Posistion and orientation of all individuals was recorded twice per second. The focus of that work was interaction networks.
 
 %%TODO: fix below to be more consistent
-A recent experiment with a strong focus on trophallaxis
-\citep{gernat_automated_2018} has a lot of similarities to ours in terms of
+A recent experiment on marked bee colonies with a strong focus on trophallaxis
+\citep{gernat_automated_2018} also has a lot of similarities to ours in terms of
 tracking method. It uses tag markers and tracks multiple bees across a longer
 period of time. Being focused on a more specific problem allowed for a more
 specialized setup that made tracking easier, but was more intrusive in terms of
@@ -95,9 +96,7 @@ how it influenced the bees’ lifes. The hive was single-sided and designed in a
 way that prevented the bees from obscuring each others’ barcodes (presumably by
 keeping the space between hive surface and glass ceiling small). The hive was
 also backlit by infrared light, making the surface easier to distinguish from
-the insects. These factors (hopefully) did not have a strong adverse effect on
-the relevant data, but would not work for a holistic observation attempted in
-BeesBook.
+the insects. 
 
 \section{More related studies}
 
@@ -109,26 +108,35 @@ comparison is interaction networks - they do, however, still fulfil the more
 general criteria of relevance to invertebrate traching and to the BeesBook project.
 
 %********************************** %Second Section  **************************************
-\section{TODO: drop or write down, DOL reasearch} 
+%TODO \section{TODO: drop or write down, DOL reasearch} 
 
 
 %********************************** %Third Section  **************************************
 \section{Works related to Beesbook} 
 
-%TODO: table-based refactor or text-based refactor
-TODO: table-based refactor or text-based refactor
+BeesBook is a long-running project with subsequent work building on the design
+outlined in the original paper (\cite{wario_automatic_2015}). Apart from works and theses that use it as foundation for their research, there were also contributions with an explicit goal of improving the usefulness of BeesBook's data:
 
-BeesBook is a long-running project with work subsequent to the original paper
-contributing improvements in the soft- and hardware of the detection stack (Sixt
-et al., 2016, Wild et al., 2018, Boenisch et al., 2018), as well as various
-applications of its data in collective behaviour and honeybee research (Adrian*
-et al, 2018).
 
-RenderGAN Boenisch 2018 Automatic detection and decoding of honey bee waggle
-dances (Wario 2017) DCCN on markers, Wild 2018
+\begin{itemize}
+    \item\cite{sixt_rendergan:_2016} Proposes a novel way of artificially generating labeled examples for the tag classifier
+    \item\cite{wild_automatic_2018} Improves localization and detection of tags by introducing a pipeline based on two deep convolutional neural netwokrs (DCCNs)
+    \item\cite{boenisch_tracking_2018}  Introduces the abstraction of Tracks, used to study trajectories and to significatntly reduce the number of incorrect decodings
+\end{itemize}
 
-This work is meant to add building blocks to the BeesBook system and derive new
-abstractions that can be used in future analyses, particularly those pertaining
-to the forager transition and the foraging phase of a bee’s life. While no
-previous work seems to state that as an explicit goal, a number of them have
-made significant contributions as a side effect of their examinations.
+
+This work is meant to add more building blocks to the BeesBook system and derive new
+abstractions that can be used in future analyses. While the aforementioned papers don't state that as an explicit goal, they did contribute in this way, particularly \cite{boenisch_tracking_2018}, with the introduction of Tracks as a usable abstraction that is now part of BeesBook.
+
+The abstractions I want to add pertain to presence in the hive, division of labor and the foraging transision.
+
+
+
+%as well as various
+%applications of its data in collective behaviour and honeybee research
+
+
+%RenderGAN Boenisch 2018 Automatic detection and decoding of honey bee waggle
+%dances (Wario 2017) DCCN on markers, Wild 2018
+
+
